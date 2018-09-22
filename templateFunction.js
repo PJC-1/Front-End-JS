@@ -26,3 +26,26 @@
 //
 //
 // Now it's your turn!
+
+
+
+
+var template = function(str, delimiter={open: '*(', close: ')*'}) {
+
+    if (delimiter) {
+        open = delimiter.open;
+        close = delimiter.close;
+    }
+
+    var tmpStr = str.split(open);
+    var parts = [];
+    parts.push(tmpStr[0]);
+
+    for (var part of tmpStr) {
+        if (part.split(close).length > 1) {
+            parts.push(part.split(close)[1]);
+        }
+    }
+
+    return parts;
+};

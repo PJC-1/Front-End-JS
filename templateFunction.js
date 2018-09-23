@@ -27,10 +27,7 @@
 //
 // Now it's your turn!
 
-
-
-
-var template = function(str, delimiter={open: '*(', close: ')*'}) {
+var template = function(str, delimiter={open:'*(', close:')*'}) {
 
     if (delimiter) {
         open = delimiter.open;
@@ -47,5 +44,22 @@ var template = function(str, delimiter={open: '*(', close: ')*'}) {
         }
     }
 
-    return parts;
+
+    var res = function(...args){
+        var res = parts[0];
+
+        for (var i = 0; i < args.length-1; i++) {
+            res += args[i];
+            console.log(args[i]);
+            res += parts[i+1];
+            console.log(parts[i+1]);
+        }
+
+        for (var j = 0; j < args[args.length-1]; j++) {
+            console.log(res);
+        }
+
+    };
+
+    return res;
 };
